@@ -1,0 +1,15 @@
+Go to npmjs.com 
+search for json-server
+
+run as standalone server
+
+  npx json-server -p 3500 -w data/db.json
+
+where
+-p = port
+-w - watch
+
+
+
+
+

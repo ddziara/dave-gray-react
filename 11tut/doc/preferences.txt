@@ -1,0 +1,10 @@
+File -> Preferences -> Settings
+
+  type emmet
+
+  find "Emmet: Include Languages"
+
+  Click "Add Item"             (adds mapping for languages that do not support emmet)
+
+    Item                       Value   
+    javascript                 javascriptreact

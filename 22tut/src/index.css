@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  background-color: #efefef;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  width: 100%;
+  max-width: 800px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #333;
+  box-shadow: 0px 0px 15px gray;
+}
+
+.Header, .Footer {
+  width: 100%;
+  background-color: #66d8f5;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header h1 {
+  font-size: 1.5rem;
+}
+
+.Footer {
+  padding: 0.75rem;
+  display: grid;
+  place-content: center;
+}
+
+.Header svg {
+  font-size: 2rem;
+}
+
+.Nav {
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.searchForm {
+  /* width: 80%;
+  padding: 1rem 0 0 0.75rem; */
+  position: relative;
+}
+
+.searchForm input[type="search"] {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  min-width: 48px;
+  font-size: 1rem;
+  /* padding: 0.25rem; */
+  padding: 0.25rem 0.25rem 0.25rem 2rem;
+  border-radius: 0.25rem;
+  outline: none;
+  /* the following is from react router tutorial */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%23999' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.425rem 0.50rem;
+  background-size: 1rem;
+  position: relative;
+}
+
+/* .searchForm input[type="search"]:autofill,
+.searchForm input[type="search"]:-webkit-autofill {
+  font-size: 1rem;
+} */
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.Nav ul {
+  color: #fff;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.Nav li {
+  padding: 1rem;
+}
+
+.Nav li:hover, 
+.Nav li:focus {
+  padding: 1rem;
+}
+
+.Nav li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.Nav li:hover, 
+.Nav li:focus, 
+.Nav li:hover a, 
+.Nav li:focus a {
+  background-color: #eee;
+  color: #333;
+}
+
+.Nav li:hover a, 
+.Nav li:focus a {
+  cursor: pointer;
+}
+
+.Outlet {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.Home, .NewPost, .PostPage, .About, .ErrorPage {
+  width: 100%;
+  flex-grow: 1;
+  padding: 1rem;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.post {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1ps solid lightgray;
+}
+
+.Home .post a {
+  text-decoration: none;
+}
+
+.Home .post a,
+.Home .post a:visited {
+  color: #000;
+}
+
+.post:first-child {
+  margin-top: 0;
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.postDate {
+  font-size: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.postBody {
+  margin: 1rem 0;
+}
+
+.newPostForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.newPostForm label {
+  margin-top: 1rem;
+}
+
+.newPostForm input[type="text"],
+.newPostForm textarea {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+}
+
+.newPostForm textarea {
+  height: 100px;
+}
+
+.newPostForm button {
+  margin-top: 1rem;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ErrorPage p, .PostPage p, .NewPost p {
+  margin-top: 1rem;
+}
+
+.PostPage button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.editButton {
+  background-color: #333;
+}
+
+.statusMsg {
+  margin-top: 2rem;
+}
+
+/*************************************************/
+/* my adjustments                                */
+/*************************************************/
+.post form {
+  display: inline;
+}
+
+/* from react router tutorial */
+  
+.searchForm > input[type="search"].loading {
+  background-image: none;
+}
+
+#detail.loading {
+  opacity: 0.25;
+  transition: opacity 200ms;
+  transition-delay: 200ms;
+}
+
+#search-spinner {
+  width: 1rem;
+  height: 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23000' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M20 4v5h-.582m0 0a8.001 8.001 0 00-15.356 2m15.356-2H15M4 20v-5h.581m0 0a8.003 8.003 0 0015.357-2M4.581 15H9' /%3E%3C/svg%3E");
+  animation: spin 1s infinite linear;
+  position: absolute;
+  /* left: 0.625rem;
+  top: 0.75rem; */
+  left: 0.425rem;
+  top: 0.50rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+  
+.Nav li a.active {
+  background: hsl(224, 98%, 58%);
+  color: white;
+}
+
+.Nav li a.pending {
+  color: hsl(224, 98%, 58%);
+}
+
+/* media queries */
+
+
+@media only screen and (min-width: 610px) {
+  html {
+    font-size: 22px;
+  }
+
+  .Header h1 {
+    font-size: 2rem;
+  }
+
+  .Nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Nav ul {
+    text-align: right;
+  }
+
+  .Nav li:hover, 
+  .Nav li:focus, 
+  .Nav li:hover a, 
+  .Nav li:focus a  {
+    background-color: #eee;
+    color: #333;
+  }
+
+  /* .searchForm {
+    width: 50%;
+    padding: .5rem 0;
+  } */
+ 
+  .searchForm /*input[type="search"]*/ {
+    margin-left: 0.5rem;
+  }
+
+  .newPostForm textarea {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .Header svg {
+    font-size: 3rem;
+  }
+
+}

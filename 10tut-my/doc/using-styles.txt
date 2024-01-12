@@ -1,0 +1,19 @@
+1. styled components
+
+https://styled-components.com/
+
+npm install styled-components
+
+2. inline styles inside .jsx
+
+    const headerStyle = {
+        backgroundColor: "mediumblue",
+        color: "#fff"
+    };
+
+    return (
+        <header style={headerStyle}>
+            <h1>Groceries List</h1>
+        </header>
+    )
+

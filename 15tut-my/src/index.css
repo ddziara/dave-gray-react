@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --index: 1;
+}
+
+html {
+  font-size: 1.2rem;
+  font-weight:normal;
+}
+
+button {
+  font-size: inherit;
+  font-weight: inherit;
+  width: 33%;
+  height: 48px;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  border: var(--index) solid green;
+}
+
+.selected-button {
+  background-color: black;
+  color: whitesmoke;
+}
+
+main {
+  /* padding: 1rem 2rem; */
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+table {
+  border: 1px solid #000;
+  margin: 0;
+}
+
+tr {
+  border: 1px solid #000;
+}
+
+td {
+  border: 1px solid #000;
+  padding: 1rem;
+}

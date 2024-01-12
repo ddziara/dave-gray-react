@@ -1,0 +1,204 @@
+import { createStore, action, thunk, computed } from "easy-peasy";
+import api from "./api/posts";
+
+export default createStore({
+    posts: [],
+    setPosts: action((state, payload) => {
+        state.posts = payload;
+    }),
+    postTitle: "",
+    setPostTitle: action((state, payload) => {
+        state.postTitle = payload;
+    }),
+    postBody: "",
+    setPostBody: action((state, payload) => {
+        state.postBody = payload;
+    }),
+    // editTitle: "",
+    // setEditTitle: action((state, payload) => {
+    //     state.editTitle = payload;
+    // }),
+    // editBody: "",
+    // setEditBody: action((state, payload) => {
+    //     state.editBody = payload;
+    // }),
+    search: "",
+    setSearch: action((state, payload) => {
+        state.search = payload;
+    }),
+    // searchResults: "",
+    // setSearchResults: action((state, payload) => {
+    //     state.searchResults = payload;
+    // }),
+    postCount: computed(state => state.posts.length),
+    // getPostById: computed(state => {
+    //     return id => state.posts.find(post => post.id.toString() === id);
+    // }),
+    // savePost: thunk(async (actions, newPost, helpers) => {
+    //     const { posts } = helpers.getState();
+
+    //     try {
+    //         const response = await api.post("/posts", newPost)
+    //         actions.setPosts([...posts, response.data]);
+    //         actions.setPostTitle("");
+    //         actions.setPostBody("");
+    //     }
+    //     catch (err) {
+    //         console.log(`Error: ${err.message}`);
+    //     }
+    // }),
+    // deletePost: thunk(async (actions, id, helpers) => {
+    //     const { posts } = helpers.getState();
+
+    //     try {
+    //         await api.delete(`/posts/${id}`);
+    //         actions.setPosts(posts.filter(post => post.id !== id));
+    //     }
+    //     catch (err) {
+    //         console.log(`Error: ${err.message}`);
+    //     }
+    // }),
+    // editPost: thunk(async (actions, updatedPost, helpers) => {
+    //     const { posts } = helpers.getState();
+    //     const { id } = updatedPost;
+
+    //     try {
+    //         const response = await api.put(`/posts/${id}`, updatedPost)
+    //         actions.setPosts(posts.map(post => post.id === id ? { ...response.data } : post));
+    //         actions.setEditTitle("");
+    //         actions.setEditBody("");
+    //     }
+    //     catch (err) {
+    //         console.log(`Error: ${err.message}`);
+    //     }
+    // }),
+});
+
+// to use it
+//
+// import { StoreProvider } from "easy-peasy";
+// import store from "./store";
+//
+// ...
+// <React.StrictMode>
+//   <StoreProvider store={store}>
+//     ...
+//   </StoreProvider> 
+// </React.StrictMode>
+//
+//
+// import { useStoreActions } from "easy-peasy";
+//
+// function App() {
+//   const setPosts = useStoreActions(actions => actions.setPosts)    
+//   const { data, fetchError, isLoading } = useAxiosFetch("http://localhost:3500/posts");
+//
+//   useEffect(() => {
+//    setPosts(data);
+//   }, [data, setPosts])
+//   
+//   return (
+//     <div className="App"> 
+//     ...
+//       <Route exact path="/">
+//         <Home
+//           isLoading="isLoading"
+//           fetchError={fetchError}
+//         />
+//   )
+//
+// ------------------------------------------------------------------------------------------------
+// import { useStoreState, useStoreActions } from "easy-peasy";
+//
+// const Nav = () => {
+//    const posts = useStoreState(state => state.posts);
+//    const search = useStoreState(state => state.search);
+//    const setSearch = useStoreActions(actions => actions.setSearch);
+//    const setSearchResults = useStoreActions(actions => actions.setSearchResults);
+//
+//    useEffect(() => {
+//      const filteredResults = posts.filter(post =>
+//        post.body.toLowerCase().includes(search.toLowerCase())
+//        || post.title.toLowerCase().includes(search.toLowerCase()));
+//      
+//      setSearchResults(filteredResults.reverse());
+//    }, [posts, search, setSearchResults]);
+//
+//    ...
+// }
+//
+// ------------------------------------------------------------------------------------------------
+// import { useStoreState } from "easy-peasy";
+//
+// const Home = ({isLoading, fetchError}) => {
+//   const searchResults = userStoreState(state => state.searchResults);
+//   ...
+// }
+//
+// ------------------------------------------------------------------------------------------------
+// import { useStoreState, useStoreActions } from "easy-peasy";
+//
+// const PostPage = () => {
+//   const deletePost = useStoreActions(actions => actions.deletePost);  
+//   const getPostById = useStoreState(store => state.getPostById)
+//   const post = getPostById(id);
+//
+//   const handleDelete = async (id) => {
+//     deletePost(id);    
+//     history.push("");
+//   };
+// }
+//
+// ------------------------------------------------------------------------------------------------
+// import { useStoreState, useStoreActions } from "easy-peasy";
+//
+// const NewPost = () => {
+//   const posts = useStoreState(state => state.posts);   
+//   const postTitle = useStoreState(state => state.postTitle);   
+//   const postBody = useStoreState(state => state.postBody);   
+//
+//   const savePost = useStoreActions(actions => actions.savePost);
+//   const setPostTitle = useStoreActions(actions => actions.setPostTitle);
+//   const setPostBody = useStoreActions(actions => actions.setPostBody);
+//
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+//     const datetime = format(new Date(), "MMMM dd, yyyy pp");
+//     const newPost = { id, title: postTitle, dayetime, body: postBody }  ;
+//     savePost(newPost);
+//     history.push("/");
+//   };
+//   ...
+// };
+//
+// ------------------------------------------------------------------------------------------------
+// import { useStoreState, useStoreActions } from "easy-peasy";
+//
+// const EditPost = () => {
+//   const editTitle = useStoreState(state => state.editTitle);   
+//   const editBody = useStoreState(state => state.editBody);   
+//
+//   const editPost = useStoreActions(actions => actions.editPost);
+//   const setEditTitle = useStoreActions(actions => actions.setEditTitle);
+//   const setEditBody = useStoreActions(actions => actions.setEditBody);
+//
+//   const getPostById = useStoreState(store => state.getPostById)
+//   const post = getPostById(id);
+//
+//   useEffect(() => {
+//      if(post) {
+//        setEditTitle(post.title);
+//        setEditBody(post.body);
+//      }
+//   }, [post, setEditTitle, setEditBody]);
+//
+//   handleEdit = async (id) => {
+//     const datetime = format(new Date(), "MMMM dd, yyyy pp");
+//     const updatePost = { id, title: editTitle, datetime, body: editBody};
+//     editPost(updatePost);
+//     history.pushState(`/post${id}`);
+//   };
+//
+//   ...
+// }    

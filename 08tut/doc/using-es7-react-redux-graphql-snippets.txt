@@ -1,0 +1,8 @@
+press CTRL + ALT + R
+
+then type: 
+  rafce
+for arrow functional component exporting default
+
+
+

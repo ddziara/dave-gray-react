@@ -1,0 +1,4 @@
+npm show react-native@* version
+
+npm show react-native versions
+

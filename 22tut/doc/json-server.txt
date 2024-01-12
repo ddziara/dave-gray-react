@@ -1,0 +1,4 @@
+run it (changed since yesturday, no -w option):
+
+npx json-server -p 3500 data/db.json
+
